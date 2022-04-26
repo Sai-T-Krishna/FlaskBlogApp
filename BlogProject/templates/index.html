@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid my-4 rounded" style="background-color: rgba(255, 255, 255, 0.266);
+-webkit-backdrop-filter: blur(10px);
+backdrop-filter: blur(10px);" >
+    <div class="container " >
+      <h1 class="display-8 text-center">Welcome to the Blog</h1>
+      
+    </div>
+  </div>
+
+  <div class="container">
+    {% for post in blog_posts.items %}
+    <div class="card" style="background-color: rgba(255, 255, 255, 0.266);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);">
+      <div class="card-body">
+        <h2><a class="card-title" href ="{{url_for('blog_posts.blog_post',blog_post_id = post.id)}}">{{post.title}}</a></h2>
+        <a href="{{url_for('users.user_posts',username = post.author.username)}}">Written By: {{post.author.username}}</a>
+        <p>Published on: {{post.date.strftime('%Y-%m-%d')}}</p>
+        <a class = "btn btn-primary" href="{{url_for('blog_posts.blog_post',blog_post_id = post.id)}}">Read Blog Post</a>
+      
+     </div>
+
+    </div>
+    {% endfor %}
+
+  </div>
+
+
+  <nav aria-label="Page navigation example" style="margin-top: 10px;">
+    <ul class="pagination justify-content-center">
+
+        {% for page_num in blog_posts.iter_pages(left_edge = 1, right_edge=1,left_current=1,right_current=2) %}
+
+        {% if blog_posts.page == page_num %}
+        
+        <li class = 'page-item disabled'>
+
+            <a class = 'page-link' href="{{url_for('core.index', page=page_num)}}">{{page_num}}</a>
+
+        </li>
+
+        {% else %}
+        
+        <li class = 'page-item'>
+            
+            <a class = 'page-link' href="{{url_for('core.index', page=page_num)}}">{{page_num}}</a>
+
+        </li>
+
+        {% endif %}
+
+        {% endfor %}
+      
+    </ul>
+  </nav>
+
+{% endblock %}
