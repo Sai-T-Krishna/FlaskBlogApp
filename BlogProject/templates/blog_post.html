@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="jumbotron" style="background-color: rgba(255, 255, 255, 0.266);
--webkit-backdrop-filter: blur(10px);
-backdrop-filter: blur(10px);">
+<div class="jumbotron">
     <h1>{{title}}</h1>
     <h2>Written by: {{post.author.username}}</h2>
     <h3>Published: {{post.date.strftime('%B %d, %Y')}}</h3>

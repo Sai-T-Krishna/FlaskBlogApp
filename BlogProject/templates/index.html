@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="jumbotron jumbotron-fluid my-4 rounded" style="background-color: rgba(255, 255, 255, 0.266);
--webkit-backdrop-filter: blur(10px);
-backdrop-filter: blur(10px);" >
+<div class="jumbotron jumbotron-fluid my-4 rounded">
     <div class="container " >
       <h1 class="display-8 text-center">Welcome to the Blog</h1>
       
@@ -12,9 +10,7 @@ backdrop-filter: blur(10px);" >
 
   <div class="container">
     {% for post in blog_posts.items %}
-    <div class="card" style="background-color: rgba(255, 255, 255, 0.266);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);">
+    <div class="card" >
       <div class="card-body">
         <h2><a class="card-title" href ="{{url_for('blog_posts.blog_post',blog_post_id = post.id)}}">{{post.title}}</a></h2>
         <a href="{{url_for('users.user_posts',username = post.author.username)}}">Written By: {{post.author.username}}</a>

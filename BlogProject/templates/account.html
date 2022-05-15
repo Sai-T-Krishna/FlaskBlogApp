@@ -1,17 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="jumbotron" style="background-color: rgba(255, 255, 255, 0.266);
-    -webkit-backdrop-filter: blur(10px);margin-top: 10px;
-    backdrop-filter: blur(10px);">
+    <div class="jumbotron">
         <div align="center">
             <h1>Welcome to the page for {{current_user.username}}</h1>
             <img align = 'center' src="{{url_for('static', filename = 'profile_pics/' + current_user.profile_image)}}">
 
         </div>
     </div>
-    <div class="container rounded" style="background-color: rgba(255, 255, 255, 0.266);
-    -webkit-backdrop-filter: blur(10px);padding: 30px;
-    backdrop-filter: blur(10px);">
+    <div class="container rounded" >
         <form method="POST" action="" enctype="multipart/form-data">
 
             {{form.hidden_tag()}}
